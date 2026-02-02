@@ -36,9 +36,6 @@
       <div class="fwxDescription">
         <strong>@</strong> Explore our cover generation tool! Take advantage of all the available features, customize your skin, and have fun creating unique capes.
       </div>
-
-      <input id="fwxFileInput" type="file" onchange="fwxHandleUpload();" multiple hidden>
-      <canvas id="fwxCanvas" width="64px" height="64px" hidden></canvas>
       <button onclick="document.getElementById('fwxFileInput').click();">
         Import your Skin (64x64)
       </button>
@@ -60,6 +57,8 @@
       <button onclick="document.getElementById('fwxFileInput').click();">
         Update Json
       </button>
+      <input id="fwxFileInput" type="file" onchange="fwxHandleUpload();" multiple hidden>
+      <canvas id="fwxCanvas" width="64px" height="64px" hidden></canvas>
       <img id="fwxPreview" src="https://sfwx.github.io/floral/64/dummy.png" hidden>
     </main>
     <a class="fwxCopyright" href="https://sfwx.github.io/copyright?type=Minecraft">
