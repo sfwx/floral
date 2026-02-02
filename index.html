@@ -28,54 +28,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://sfwx.github.io/floral/style.css">
   </head>
-  <body>
-    <div class="fwxHeader">
+  <body class="fwxMinecraftUI fwxFloralCapes">
+    <header>
       Floral Capes
-    </div>
-    <div class="fwxContainer">
+    </header>
+    <main>
       <div class="fwxDescription">
         <strong>@</strong> Explore our cover generation tool! Take advantage of all the available features, customize your skin, and have fun creating unique capes.
       </div>
+
       <input id="fwxFileInput" type="file" onchange="fwxHandleUpload();" multiple hidden>
       <canvas id="fwxCanvas" width="64px" height="64px" hidden></canvas>
-      <img id="fwxPreview" src="https://sfwx.github.io/floral/64/dummy.png" style="background-color: #222222; image-rendering: pixelated; margin-bottom: 12.5px;" hidden>
-      <button class="fwxButton" style="margin-bottom: 10px; margin-left: 0.25px;" onclick="document.getElementById('fwxFileInput').click();">
+      <button onclick="document.getElementById('fwxFileInput').click();">
         Import your Skin (64x64)
       </button>
-      <div class="fwxGrid">
+      <div class="fwxLayout">
         <div id="fwxCapePreview" style="background-image: url('https://sfwx.github.io/floral/64/cape.png');"></div>
-        <div class="fwxButtons">
+        <div>
           <div id="fwxSkinPreview" style="background-image: url('https://sfwx.github.io/floral/64/dummy.png');"></div>
-          <button class="fwxButton" style="width: 195px;" onclick="document.getElementById('fwxFileInput').click();">
+          <button style="margin-left: 5px; width: 190px;" onclick="document.getElementById('fwxFileInput').click();">
             Import your Cape
           </button>
         </div>
       </div>
-      <div class="fwxButtons" style="margin-left: 1px; margin-top: -20px;">
-        <button id="fwxSaveButton" class="fwxButton" onclick="fwxCreateSkin();" disabled>
-          Save
-        </button>
-        <a href="https://github.com/sfwx/sfwx.github.io/raw/main/floral/fwxTexture.mcpack" download>
-          <button class="fwxButton">
-            Texture Pack
-          </button>
-        </a>
-        <button class="fwxButton" onclick="document.getElementById('fwxFileInput').click();">
-          Update Json
-        </button>
-      </div>
-    </div>
-    <div class="fwxCopyright">
-      <a href="https://sfwx.github.io/copyright?type=Minecraft">
-        &copy; FlowniX. Direitos Autorais & Termos
-      </a>
-    </div>
-    <div class="fwxContainer">
-      <div class="fwxConsoleContainer">
-        <div id="fwxConsole">Aguardando arquivo...</div>
-      </div>
+      <button id="fwxSaveButton" onclick="fwxCreateSkin();" disabled>
+        Save
+      </button>
+      <button href="https://github.com/sfwx/sfwx.github.io/raw/main/floral/fwxTexture.mcpack" download>
+        Texture Pack
+      </button>
+      <button onclick="document.getElementById('fwxFileInput').click();">
+        Update Json
+      </button>
+      <img id="fwxPreview" src="https://sfwx.github.io/floral/64/dummy.png" hidden>
+    </main>
+    <a class="fwxCopyright" href="https://sfwx.github.io/copyright?type=Minecraft">
+      &copy; FlowniX. Copyright & Terms
+    </a>
+    <div id="fwxConsole">
+      FwX: Olá mundo!<br>
+      Aguardando arquivo...
     </div>
     <script type="text/javascript" src="https://sfwx.github.io/main.js" defer></script>
-    <script type="text/javascript" src="https://sfwx.github.io/floral/script.js" defer></script>
+    <script type="text/javascript" src="sfwx.github.io/floral/script.js" defer></script>
   </body>
-  </html>
+</html>
