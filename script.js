@@ -1,4 +1,4 @@
-/*         FwX: EDITOR-NBT          */
+/*         FwX: FLORAL-CAPES        */
 /* Todos os direitos são reservados */
 /* https://sfwx.github.io/copyright */
 
