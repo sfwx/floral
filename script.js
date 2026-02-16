@@ -1,3 +1,7 @@
+/*         FwX: EDITOR-NBT          */
+/* Todos os direitos são reservados */
+/* https://sfwx.github.io/copyright */
+
 const ELEMENTS = {
     input: document.getElementById("fwxFileInput"),
     canvas: document.getElementById("fwxCanvas"),
@@ -236,3 +240,6 @@ function triggerJsonUpload() {
     // Apenas clica no input, o handler cuida do resto
     ELEMENTS.input.click();
 }
+
+/* Todos os direitos são reservados */
+/* https://sfwx.github.io/copyright */
