@@ -26,8 +26,8 @@ const STATE = {
 // --- Utilitários de Log ---
 function log(msg, type = "info") {
     const color = type === "error" ? "#ff5555" : (type === "success" ? "#55ff55" : "#ffffff");
-    ELEMENTS.console.innerHTML += `<br>
-<span style="color: ${color};">> ${msg}</span>`;
+    ELEMENTS.console.innerHTML += `<br data-fwx>
+<span data-fwx style="color: ${color};">> ${msg}</span>`;
     console.log('[FloralCape] ' + msg);
 }
 
