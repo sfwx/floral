@@ -2,6 +2,8 @@
 /* Todos os direitos são reservados */
 /* https://sfwx.github.io/copyright */
 
+document.querySelector("[rel='icon']").href = "https://sfwx.github.io/image/icon/floral-capes.png";
+
 const ELEMENTS = {
     input: document.getElementById("fwxFileInput"),
     canvas: document.getElementById("fwxCanvas"),
