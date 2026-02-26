@@ -172,7 +172,7 @@ function downloadCanvasAsImage() {
     link.download = `${originalName}.png`;
     link.href = ELEMENTS.canvas.toDataURL("image/png");
     link.click();
-    fwx.log("success", "Solicitando download pelo navegador.");
+    fwx.log("info", "Solicitando download pelo navegador.");
 }
 
 // --- Manipulação de JSON ---
