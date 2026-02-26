@@ -25,14 +25,6 @@ const STATE = {
     overlayUrl: "https://sfwx.github.io/floral/64/signature.png" // URL da marca d'agua/overlay
 };
 
-// --- Utilitários de Log ---
-function log(msg, type = "info") {
-    const color = type === "error" ? "#ff5555" : (type === "success" ? "#55ff55" : "#ffffff");
-    ELEMENTS.console.innerHTML += `<br data-fwx>
-<span data-fwx style="color: ${color};">> ${msg}</span>`;
-    console.log('[FloralCape] ' + msg);
-}
-
 // --- Carregamento de Imagens ---
 const loadImage = (src) => new Promise((resolve, reject) => {
     const img = new Image();
@@ -62,7 +54,7 @@ async function fwxHandleUpload() {
     const files = ELEMENTS.input.files;
     if (!files.length) return;
 
-    log("Analisando arquivos...");
+    fwx.log("info", "Analisando arquivos...");
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -85,21 +77,20 @@ async function fwxHandleUpload() {
                     STATE.skin = img;
                     STATE.skinFile = file;
                     ELEMENTS.skinPreview.style.backgroundImage = `url('${dataUrl}')`;
-                    log("Skin detectada e carregada.", "success");
+                    fwx.log("success", "Skin detectada e carregada.");
                 } 
                 // Capa: 2:1 (64x32 ou 128x64)
                 else if (ratio === 2) {
                     STATE.cape = img;
                     STATE.capeFile = file;
                     ELEMENTS.capePreview.style.backgroundImage = `url('${dataUrl}')`;
-                    log("Capa detectada e carregada.", "success");
+                    fwx.log("success", "Capa detectada e carregada.");
                 } else {
-                    log(`Formato de imagem desconhecido: ${img.width}x${img.height}`, "error");
+                    fwx.log("error", `Formato de imagem desconhecido: ${img.width}x${img.height}`);
                 }
 
             } catch (error) {
-                log("Erro ao ler imagem.", "error");
-                console.error(error);
+                fwx.log("error", "Erro ao ler imagem.");
             }
         }
     }
@@ -112,11 +103,11 @@ async function fwxHandleUpload() {
 
 async function fwxCreateSkin() {
     if (!STATE.skin) {
-        log("Nenhuma skin carregada para processar.", "error");
+        fwx.log("error", "Nenhuma skin carregada para processar.");
         return;
     }
 
-    log("Gerando FloralCape Skin...");
+    fwx.log("info", "Gerando FloralCape Skin...");
     
     const ctx = ELEMENTS.canvas.getContext("2d");
     
@@ -140,7 +131,7 @@ async function fwxCreateSkin() {
         const overlayImg = await loadImage(STATE.overlayUrl);
         ctx.drawImage(overlayImg, 0, 0, size, size);
     } catch (e) {
-        console.warn("Não foi possível carregar o overlay do servidor. Prosseguindo sem ele.");
+        fwx.log("warn", "Não foi possível carregar o overlay do servidor. Prosseguindo sem ele.");
     }
 
     // 3. Aplica a Lógica da Capa (FloralCape Mapping)
@@ -164,7 +155,7 @@ async function fwxCreateSkin() {
         // Parte 3 (Opcional - Topo/Cabeça da capa?) -> Cola em 56, 0
         // ctx.drawImage(STATE.skin, 8, 8, 8, 8, 56, 0, 8, 8); // Exemplo antigo, copiava parte da skin
         
-        log("Capa aplicada à textura.", "success");
+        fwx.log("success", "Capa aplicada à textura.");
     }
 
     // Atualiza preview final (invisível na UI mas útil para debug)
@@ -181,7 +172,7 @@ function downloadCanvasAsImage() {
     link.download = `${originalName}_floral.png`;
     link.href = ELEMENTS.canvas.toDataURL("image/png");
     link.click();
-    log("Download iniciado!", "success");
+    fwx.log("success", "Download iniciado!");
 }
 
 // --- Manipulação de JSON ---
@@ -232,10 +223,10 @@ async function fwxUpdateJson(file) {
         link.download = file.name; // Mantém o mesmo nome
         link.click();
         
-        log(`JSON atualizado: ${file.name}`, "success");
+        fwx.log("success", `JSON atualizado: ${file.name}`);
 
     } catch (error) {
-        log(`Erro no JSON: ${error.message}`, "error");
+        fwx.log("success", `Erro no JSON: ${error.message}`);
     }
 }
 
