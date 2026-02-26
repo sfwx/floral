@@ -4,6 +4,8 @@
 
 document.querySelector("[rel='icon']").href = "https://sfwx.github.io/image/icon/floral-capes.png";
 
+fwx.log("info", "Aguardando arquivo...");
+
 const ELEMENTS = {
     input: document.getElementById("fwxFileInput"),
     canvas: document.getElementById("fwxCanvas"),
