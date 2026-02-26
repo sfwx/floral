@@ -4,7 +4,7 @@
 
 document.querySelector("[rel='icon']").href = "https://sfwx.github.io/image/icon/floral-capes.png";
 
-fwx.log("info", "Aguardando arquivo...");
+fwx.log("info", "Pronto para execução.");
 
 const ELEMENTS = {
     input: document.getElementById("fwxFileInput"),
@@ -54,7 +54,7 @@ async function fwxHandleUpload() {
     const files = ELEMENTS.input.files;
     if (!files.length) return;
 
-    fwx.log("info", "Analisando arquivos...");
+    fwx.log("info", "Analisando arquivos..");
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -77,14 +77,14 @@ async function fwxHandleUpload() {
                     STATE.skin = img;
                     STATE.skinFile = file;
                     ELEMENTS.skinPreview.style.backgroundImage = `url('${dataUrl}')`;
-                    fwx.log("success", "Skin detectada e carregada.");
+                    fwx.log("success", "Skin carregada com sucesso.");
                 } 
                 // Capa: 2:1 (64x32 ou 128x64)
                 else if (ratio === 2) {
                     STATE.cape = img;
                     STATE.capeFile = file;
                     ELEMENTS.capePreview.style.backgroundImage = `url('${dataUrl}')`;
-                    fwx.log("success", "Capa detectada e carregada.");
+                    fwx.log("success", "Capa carregada com sucesso.");
                 } else {
                     fwx.log("error", `Formato de imagem desconhecido: ${img.width}x${img.height}`);
                 }
@@ -107,7 +107,7 @@ async function fwxCreateSkin() {
         return;
     }
 
-    fwx.log("info", "Gerando FloralCape Skin...");
+    fwx.log("info", "Gerando textura com novo formato..");
     
     const ctx = ELEMENTS.canvas.getContext("2d");
     
@@ -131,7 +131,7 @@ async function fwxCreateSkin() {
         const overlayImg = await loadImage(STATE.overlayUrl);
         ctx.drawImage(overlayImg, 0, 0, size, size);
     } catch (e) {
-        fwx.log("warn", "Não foi possível carregar o overlay do servidor. Prosseguindo sem ele.");
+        fwx.log("warn", "Não foi possível carregar imagem do servidor.\nProsseguindo sem ele.");
     }
 
     // 3. Aplica a Lógica da Capa (FloralCape Mapping)
@@ -155,7 +155,7 @@ async function fwxCreateSkin() {
         // Parte 3 (Opcional - Topo/Cabeça da capa?) -> Cola em 56, 0
         // ctx.drawImage(STATE.skin, 8, 8, 8, 8, 56, 0, 8, 8); // Exemplo antigo, copiava parte da skin
         
-        fwx.log("success", "Capa aplicada à textura.");
+        fwx.log("success", "Capa aplicada à textura com sucesso.");
     }
 
     // Atualiza preview final (invisível na UI mas útil para debug)
@@ -169,10 +169,10 @@ function downloadCanvasAsImage() {
     const link = document.createElement("a");
     // Nome do arquivo baseado na skin original ou padrão
     const originalName = STATE.skinFile ? STATE.skinFile.name.replace(/\.[^/.]+$/, "") : "floral_skin";
-    link.download = `${originalName}_floral.png`;
+    link.download = `${originalName}.png`;
     link.href = ELEMENTS.canvas.toDataURL("image/png");
     link.click();
-    fwx.log("success", "Download iniciado!");
+    fwx.log("success", "Solicitando download.");
 }
 
 // --- Manipulação de JSON ---
