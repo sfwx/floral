@@ -172,7 +172,7 @@ function downloadCanvasAsImage() {
     link.download = `${originalName}.png`;
     link.href = ELEMENTS.canvas.toDataURL("image/png");
     link.click();
-    fwx.log("success", "Solicitando download.");
+    fwx.log("success", "Solicitando download pelo navegador.");
 }
 
 // --- Manipulação de JSON ---
@@ -226,7 +226,7 @@ async function fwxUpdateJson(file) {
         fwx.log("success", `JSON atualizado: ${file.name}`);
 
     } catch (error) {
-        fwx.log("success", `Erro no JSON: ${error.message}`);
+        fwx.log("error", `Erro no JSON: ${error.message}`);
     }
 }
 
